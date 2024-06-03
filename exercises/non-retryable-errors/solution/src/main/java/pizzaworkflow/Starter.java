@@ -40,7 +40,7 @@ public class Starter {
 
   private static PizzaOrder createPizzaOrder() {
     // TODO Part C: Delete one digit from the credit card number
-    CreditCardInfo cardInfo = new CreditCardInfo("Lisa Anderson", "4242424242424242");
+    CreditCardInfo cardInfo = new CreditCardInfo("Lisa Anderson", "424242424242424");
 
     Customer customer = new Customer(8675309, "Lisa Anderson", "lisa@example.com", "555-555-0000");
     Address address =
@@ -48,7 +48,8 @@ public class Starter {
     Pizza pizza1 = new Pizza("Large, with mushrooms and onions", 1500);
     Pizza pizza2 = new Pizza("Small, with pepperoni", 1200);
     Pizza pizza3 = new Pizza("Medium, with extra cheese", 1300);
-    
+
+
     List<Pizza> orderList = Arrays.asList(pizza1, pizza2, pizza3);
 
     PizzaOrder order = new PizzaOrder("XD001", customer, orderList, true, address, cardInfo);

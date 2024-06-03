@@ -25,15 +25,18 @@ You'll need two terminal windows for this exercise.
    ```
 2. In one terminal, run `mvn clean compile` to install packages.
 
-## Part A: Throw an `ApplicationFailure` to fail an Activity
+## Part A: Throw a non-retryable `ApplicationFailure` to fail an Activity
 
-In this part of the exercise, you will throw an Application Failure that will
-fail your Activities.
+In this part of the exercise, you will throw a non-retryable Application Failure 
+that will fail your Activities.
 
 Application Failures are used to communicate application-specific failures in
 Workflows and Activities. In Activities, throwing an `ApplicationFailure` will
-cause the Activity to fail. Any other exception that is raised in Java is automatically
-converted to an `ActivityFailure` upon being thrown.
+cause the Activity to fail. However, this unless this Activity is specified as
+non-retryable, it will retry according to the Retry Policy. To have an Activity
+fail when an `ApplicationFailure` is thrown, set it as non-retryable. Any other 
+exception that is raised in Java is automatically converted to an `ActivityFailure`
+upon being thrown.
 
 1. Start by reviewing the `PizzaActivities.java` file, familiarizing yourself with
    the Activity method declarations.
