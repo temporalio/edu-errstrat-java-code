@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.temporal.learn</groupId>
-  <artifactId>handling-errors-solution</artifactId>
+  <artifactId>handling-errors-practice</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>Handling Errors (solution)</name>
+  <name>Handling Errors (practice)</name>
   <url>https://learn.temporal.io</url>
 
   <properties>

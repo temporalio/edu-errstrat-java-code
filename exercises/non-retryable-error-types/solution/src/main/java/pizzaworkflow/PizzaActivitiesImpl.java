@@ -38,8 +38,6 @@ public class PizzaActivitiesImpl implements PizzaActivities {
       kilometers = 5;
     }
 
-    Activity.getExecutionContext().heartbeat("thump");
-
     Distance distance = new Distance(kilometers);
 
     logger.info("getDistance complete: {}", distance.getKilometers());
@@ -61,8 +59,6 @@ public class PizzaActivitiesImpl implements PizzaActivities {
       chargeAmount -= 500; // reduce amount charged by 500 cents
     }
 
-    Activity.getExecutionContext().heartbeat("thump");
-
     // reject invalid amounts before calling the payment processor
     if (chargeAmount < 0) {
       logger.error("invalid charge amount: {%d} (must be above zero)", chargeAmount);
@@ -82,8 +78,6 @@ public class PizzaActivitiesImpl implements PizzaActivities {
 
   @Override
   public CreditCardConfirmation processCreditCard(CreditCardInfo creditCard, Bill bill) {
-
-    Activity.getExecutionContext().heartbeat("thump");
     
     if(creditCard.getNumber().length() == 16) {
       String cardProcessingConfirmationNumber = "PAYME-78759";

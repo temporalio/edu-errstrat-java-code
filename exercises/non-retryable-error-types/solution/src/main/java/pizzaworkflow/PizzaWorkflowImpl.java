@@ -39,7 +39,6 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
   ActivityOptions options = ActivityOptions.newBuilder()
       .setStartToCloseTimeout(Duration.ofSeconds(5))
       .setRetryOptions(retryOptions)
-      .setHeartbeatTimeout(Duration.ofSeconds(2))
       .build();
 
   private final PizzaActivities activities =
