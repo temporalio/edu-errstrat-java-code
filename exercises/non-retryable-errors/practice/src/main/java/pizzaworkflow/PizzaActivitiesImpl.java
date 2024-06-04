@@ -38,8 +38,6 @@ public class PizzaActivitiesImpl implements PizzaActivities {
       kilometers = 5;
     }
 
-    Activity.getExecutionContext().heartbeat("thump");
-
     Distance distance = new Distance(kilometers);
 
     logger.info("getDistance complete: {}", distance.getKilometers());
@@ -61,13 +59,11 @@ public class PizzaActivitiesImpl implements PizzaActivities {
       chargeAmount -= 500; // reduce amount charged by 500 cents
     }
 
-    Activity.getExecutionContext().heartbeat("thump");
-
     // reject invalid amounts before calling the payment processor
     if (chargeAmount < 0) {
       logger.error("invalid charge amount: {%d} (must be above zero)", chargeAmount);
       String errorMessage = "invalid charge amount: " + chargeAmount;
-      throw Activity.wrap(new InvalidChargeAmountException(errorMessage));
+      throw ApplicationFailure.newNonRetryableFailure(errorMessage, InvalidChargeAmountException.class.getName());
     }
 
     // pretend we called a payment processing service here
@@ -83,16 +79,16 @@ public class PizzaActivitiesImpl implements PizzaActivities {
   @Override
   public CreditCardConfirmation processCreditCard(CreditCardInfo creditCard, Bill bill) {
 
-    Activity.getExecutionContext().heartbeat("thump");
-    
     if(creditCard.getNumber().length() == 16) {
       String cardProcessingConfirmationNumber = "PAYME-78759";
       return new CreditCardConfirmation(creditCard, cardProcessingConfirmationNumber, bill.getAmount(), Instant.now().getEpochSecond());
     } else {
-      throw ApplicationFailure.newFailure("Invalid credit card number",
-          CreditCardProcessingException.class.getName());
-      // This also works
-      //   throw Activity.wrap(new CreditCardProcessingException("Invalid credit card number"));
+      // TODO PART A: Refactor this code to throw a CreditCardProcessingException
+      // You can do this multiple ways. Don't forget that Activity.wrap() allows
+      // you to throw a checked exception without having to declare it in the 
+      // method header.
+      throw ApplicationFailure.newNonRetryableFailure("Invalid credit card number",
+        CreditCardProcessingException.class.getName());
     }
   }
 }

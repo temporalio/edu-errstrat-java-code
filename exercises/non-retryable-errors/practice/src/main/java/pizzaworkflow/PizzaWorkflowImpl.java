@@ -1,7 +1,6 @@
 package pizzaworkflow;
 
 import io.temporal.activity.ActivityOptions;
-import io.temporal.common.RetryOptions;
 import io.temporal.workflow.Workflow;
 import io.temporal.failure.ActivityFailure;
 import io.temporal.failure.ApplicationFailure;
@@ -28,18 +27,21 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
 
   public static final Logger logger = Workflow.getLogger(PizzaWorkflowImpl.class);
 
+  // TODO Part B: Set the CreditCardProcessingException as a non-retryable error type
+  // using `.setDoNotRetry()`.
+  // Hint: To get the FQDN of the class name, use `CreditCardProcessingException.class.getName()
   RetryOptions retryOptions = RetryOptions.newBuilder()
       .setInitialInterval(Duration.ofSeconds(15))
       .setBackoffCoefficient(2.0)
       .setMaximumInterval(Duration.ofSeconds(60))
       .setMaximumAttempts(25)
-      .setDoNotRetry(CreditCardProcessingException.class.getName())
       .build();
 
+
+  // TODO Part B: Add the retryOptions to the ActivityOptions using `.setRetryOptions`
+  // TODO Part D: Add the HeartbeatTimeout to the ActivityOptions using `.setHeartbeatTimeout`
   ActivityOptions options = ActivityOptions.newBuilder()
       .setStartToCloseTimeout(Duration.ofSeconds(5))
-      .setRetryOptions(retryOptions)
-      .setHeartbeatTimeout(Duration.ofSeconds(2))
       .build();
 
   private final PizzaActivities activities =

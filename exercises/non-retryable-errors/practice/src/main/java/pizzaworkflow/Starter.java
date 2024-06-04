@@ -39,7 +39,6 @@ public class Starter {
   }
 
   private static PizzaOrder createPizzaOrder() {
-
     CreditCardInfo cardInfo = new CreditCardInfo("Lisa Anderson", "4242424242424242");
 
     Customer customer = new Customer(8675309, "Lisa Anderson", "lisa@example.com", "555-555-0000");
