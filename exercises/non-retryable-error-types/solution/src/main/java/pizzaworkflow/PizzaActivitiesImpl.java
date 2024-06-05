@@ -105,7 +105,7 @@ public class PizzaActivitiesImpl implements PizzaActivities {
      * loop counter, it is a success. If it doesn't, then a delivery driver was
      * unable to be contacted and failure is returned.
      */
-    int successSimulation = rand.nextInt(15);
+    int successSimulation = rand.nextInt(5);
 
     for(int x = 0; x < 10; x++) {
 
