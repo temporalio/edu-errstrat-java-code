@@ -105,7 +105,7 @@ public class PizzaActivitiesImpl implements PizzaActivities {
      * loop counter, it is a success. If it doesn't, then a delivery driver was
      * unable to be contacted and failure is returned.
      */
-    int successSimulation = rand.nextInt(5);
+    int successSimulation = rand.nextInt(15);
 
     for(int x = 0; x < 10; x++) {
 
@@ -118,7 +118,7 @@ public class PizzaActivitiesImpl implements PizzaActivities {
       Activity.getExecutionContext().heartbeat("Heartbeat: " + x);
       logger.info("Heartbeat: " + x);
       try {
-        Thread.sleep(Duration.ofSeconds(15));
+        Thread.sleep(Duration.ofSeconds(5));
       } catch (InterruptedException e) {
         continue;
       }
