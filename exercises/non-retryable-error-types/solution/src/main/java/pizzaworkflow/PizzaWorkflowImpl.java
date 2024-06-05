@@ -37,8 +37,9 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
       .build();
 
   ActivityOptions options = ActivityOptions.newBuilder()
-      .setStartToCloseTimeout(Duration.ofSeconds(5))
+      .setStartToCloseTimeout(Duration.ofMinutes(30))
       .setRetryOptions(retryOptions)
+      .setHeartbeatTimeout(Duration.ofSeconds(10))
       .build();
 
   private final PizzaActivities activities =
@@ -102,6 +103,18 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
           InvalidChargeAmountException.class.getName());
     }
 
-    return confirmation;
+    boolean deliveryDriverAvailable = activities.notifyDeliveryDriver(confirmation);
+    if(deliveryDriverAvailable){
+      return confirmation;
+    } else{
+      // Notify customer delivery is not available and they will have to come
+      // get their pizza, or cancel the order and compensate.
+
+      // For this exercise, change the value of the status variable to "DELIVERY"
+      confirmation.setStatus("DELIVERY FAILURE");
+      return confirmation;
+    }
+
+    
   }
 }

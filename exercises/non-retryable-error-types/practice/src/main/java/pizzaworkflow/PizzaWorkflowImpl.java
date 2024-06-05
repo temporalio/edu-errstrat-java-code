@@ -4,6 +4,7 @@ import io.temporal.activity.ActivityOptions;
 import io.temporal.workflow.Workflow;
 import io.temporal.failure.ActivityFailure;
 import io.temporal.failure.ApplicationFailure;
+import io.temporal.common.RetryOptions;
 
 import pizzaworkflow.model.Address;
 import pizzaworkflow.model.Bill;

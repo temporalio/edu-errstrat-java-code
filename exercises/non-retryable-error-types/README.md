@@ -1,4 +1,4 @@
-## Exercise #2: Modifying Activity Options Using Non-Retryable Error Types
+## Exercise #2: Modifying Activity Options Using Non-Retryable Error Types and Heartbeats
 
 During this exercise, you will:
 
@@ -120,8 +120,120 @@ are known as non-retryable error types.
       ex2st
       ```
    3. Go to the WebUI and view the status of the Workflow. You should see an `ActivityTaskFailed`
-   error in event 18 with the message `Invalid credit card number`, and in event 22
-   you should see a `WorkflowExecutionFailed` error with the message `Unable to process credit card`.
+      error in event 18 with the message `Invalid credit card number`, and in event 22
+      you should see a `WorkflowExecutionFailed` error with the message `Unable to process credit card`.
    4. Stop your Worker using **Cmd - C**
+
+## Part C: Add Heartbeats
+
+In this part of the exercise, you will add heartbeating to your `pollDeliveryDriver`
+Activity. The `pollDeliveryDriver` method attempts to contact a driver
+to deliver the customers pizza. It may take a while for a delivery driver to accept
+the delivery, and you want to ensure that the Activity is still alive and processing.
+Heartbeats are used to do this, and fail fast if a failure is detected.
+
+In this exercise, instead of attempting to call out to an external service, success
+of the `pollDeliveryDriver` method call will be simulated.
+
+**How the simulation works**: The simulation starts by generating a number from
+0 - 14. From there a loop is iterated over from 0 < 10, each time checking to
+see if the random number matches the loop counter and then sleeping for 5 seconds.
+Each iteration of the loop sends a heartbeat back letting the Workflow know that
+progress is still being made. If the number matches a loop counter, it is a success
+and `true` is returned. If it doesn't, then a delivery driver was unable to be
+contacted and false is returned and the `status` of the `OrderConfirmation` will
+be updated to reflect this.
+
+1. Open `PizzaActivities.java`.
+2. Uncomment the line `boolean notifyDeliveryDriver(OrderConfirmation order);`
+3. Save and close the file.
+4. Open `PizzaActivitiesImpl.java`
+5. Locate the `notifyDeliveryDriver` method and uncomment it.
+6. Within the loop, after the success condition add a heartbeat, providing the
+   iteration number as the details.
+   ```java
+      Activity.getExecutionContext().heartbeat("Heartbeat: " + x);
+   ```
+7. Save and close the file.
+
+## Part D: Add a Heartbeat Timeout
+
+In the previous part of the exercise, you added a Heartbeat to an Activity. However,
+you didn't set how long the Heartbeat should be inactive for before it is considered
+a failed Heartbeat.
+
+In this section, we will add a Heartbeat Timeout to your Activities.
+
+1. Open `PizzaWorkflowImpl.java`.
+2. In the `ActivityOptions` builder, set the HeartbeatTimeout to a duration of 10
+   seconds using the `.setHeartbeatTimeout` method. This sets the maximum time allowed
+   between Activity Heartbeats before the Heartbeat is considered failed.
+3. Save and close the file.
+
+## Part E: Run the Workflow
+
+Now you will run the Workflow and witness the Heartbeats happening in the
+Web UI.
+
+1. Compile your code with `mvn clean compile`
+2. In one terminal, start the Worker by running:
+   ```bash
+   mvn exec:java -Dexec.mainClass="pizzaworkflow.PizzaWorker"
+   ```
+   or, if you're in the GitPod environment, run:
+   ```bash
+   ex2w
+   ```
+3. In another terminal, start the Workflow by executing `Starter.java`:
+   ```bash
+   mvn exec:java -Dexec.mainClass="pizzaworkflow.Starter"
+   ```
+   or, if you're in the GitPod environment, run:
+   ```bash
+   ex2st
+   ```
+4. Now go to the WebUI and find your workflow, which should be in the `Running`
+   state. Click on it to enter the details page. Once you see `Heartbeat: <A_NUMBER>` 
+   in your Worker output refresh the page and look for a **Pending Activities** 
+   section. In this section you should see **Heartbeat Details** and JSON representing
+   the payload.
+      1. Remember, the simulation will finish at a random interval. You may
+         need to run this a few times to see the results.
+
+You have now seen how heartbeats are implemented and appear when an Activity is
+running.
+
+## (Optional) Part F: Failing a Heartbeat
+
+Now that you've seen what a successful Heartbeat looks like, you should experience
+a Heartbeat that is timing out. 
+
+1. Open `PizzaActivitiesImpl.java`.
+2. In the `notifyDeliveryDriver` method, update the duration in the `sleep` statement
+   from 5s to 15s. This is longer than the Heartbeat Timeout you set in Step D.
+3. Kill the Worker from the previous exercise and recompile your code using `mvn clean compile`.
+4. In one terminal, start the Worker by running:
+   ```bash
+   mvn exec:java -Dexec.mainClass="pizzaworkflow.PizzaWorker"
+   ```
+   or, if you're in the GitPod environment, run:
+   ```bash
+   ex2w
+   ```
+5. In another terminal, start the Workflow by executing `Starter.java`:
+   ```bash
+   mvn exec:java -Dexec.mainClass="pizzaworkflow.Starter"
+   ```
+   or, if you're in the GitPod environment, run:
+   ```bash
+   ex2st
+   ```
+6. Once you see the first Heartbeat message appear in the logs, wait 15s and 
+   refresh the WebUI. You should see the same **Pending Activities** section, but
+   now there is a failure indicating that the Heartbeat timed out. You will
+   also see how many retries are left and how long until the next retry. If the 
+   Activity isn't fixed before the final attempt it will fail.
+
+You have now seen what happens when a Heartbeat times out. 
 
 ### This is the end of the exercise.

@@ -4,6 +4,7 @@ During this exercise, you will:
 
 - Throw and handle exceptions in Temporal Workflows and Activities
 - Use non-retryable errors to fail an Activity
+- Locate the details of a failure in Temporal Workflows and Activities in the Event History
 
 Make your changes to the code in the `practice` subdirectory (look for `TODO`
 comments that will guide you to where you should make changes to the code). If

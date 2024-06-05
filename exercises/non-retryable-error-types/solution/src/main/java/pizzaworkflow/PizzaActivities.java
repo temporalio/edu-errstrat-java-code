@@ -17,4 +17,6 @@ public interface PizzaActivities {
 
   CreditCardConfirmation processCreditCard(CreditCardInfo creditCard, Bill bill);
 
+  boolean notifyDeliveryDriver(OrderConfirmation order);
+
 }

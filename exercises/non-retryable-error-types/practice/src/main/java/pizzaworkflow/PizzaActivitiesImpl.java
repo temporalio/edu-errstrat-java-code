@@ -11,7 +11,9 @@ import pizzaworkflow.exceptions.InvalidChargeAmountException;
 import pizzaworkflow.exceptions.OutOfServiceAreaException;
 import pizzaworkflow.exceptions.CreditCardProcessingException;
 
+import java.time.Duration;
 import java.time.Instant;
+import java.util.Random;
 
 import io.temporal.activity.Activity;
 import io.temporal.failure.ApplicationFailure;
@@ -91,4 +93,45 @@ public class PizzaActivitiesImpl implements PizzaActivities {
         CreditCardProcessingException.class.getName());
     }
   }
+
+/*
+ @Override
+  public boolean notifyDeliveryDriver(OrderConfirmation order) {
+
+    Random rand = new Random();
+
+     // This is a simulation of attempting to notify a delivery driver that
+     // the order is ready for delivery. It starts by generating a number from 0 - 14.
+     // From there a loop is iterated over from 0 < 10, each time checking to 
+     // see if the random number matches the loop counter and then sleeping for 5
+     // seconds. Each iteration of the loop sends a heartbeat back letting the 
+     // Workflow know that progress is still being made. If the number matches a
+     // loop counter, it is a success. If it doesn't, then a delivery driver was
+     // unable to be contacted and failure is returned.
+    
+    int successSimulation = rand.nextInt(15);
+
+    for(int x = 0; x < 10; x++) {
+
+      if (successSimulation == x){
+        // Pretend to use the `order` variable to notify the driver
+        logger.info("Delivery driver responded");
+        return true;
+      }
+
+      // TODO Part C: Add a heartbeat here. Provide the current iteration of 
+      // the loop as the details.
+      
+      logger.info("Heartbeat: " + x);
+      try {
+        Thread.sleep(Duration.ofSeconds(5));
+      } catch (InterruptedException e) {
+        continue;
+      }
+
+    }
+    logger.info("Delivery driver didn't respond");
+    return false;
+  }
+  */  
 }
