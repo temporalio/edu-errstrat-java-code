@@ -106,6 +106,21 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
           InvalidChargeAmountException.class.getName());
     }
 
+    // TODO PART C: Uncomment the code to run the Activity
+    /*
+    boolean deliveryDriverAvailable = activities.notifyDeliveryDriver(confirmation);
+    if(deliveryDriverAvailable){
+      return confirmation;
+    } else{
+      // Notify customer delivery is not available and they will have to come
+      // get their pizza, or cancel the order and compensate.
+
+      // For this exercise, change the value of the status variable to "DELIVERY"
+      confirmation.setStatus("DELIVERY FAILURE");
+      return confirmation;
+    }
+    */
+
     return confirmation;
   }
 }

@@ -94,7 +94,7 @@ public class PizzaActivitiesImpl implements PizzaActivities {
     }
   }
 
-/*
+
  @Override
   public boolean notifyDeliveryDriver(OrderConfirmation order) {
 
@@ -133,5 +133,5 @@ public class PizzaActivitiesImpl implements PizzaActivities {
     logger.info("Delivery driver didn't respond");
     return false;
   }
-  */  
+ 
 }

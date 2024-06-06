@@ -144,17 +144,19 @@ and `true` is returned. If it doesn't, then a delivery driver was unable to be
 contacted and false is returned and the `status` of the `OrderConfirmation` will
 be updated to reflect this.
 
-1. Open `PizzaActivities.java`.
-2. Uncomment the line `boolean notifyDeliveryDriver(OrderConfirmation order);`
-3. Save and close the file.
-4. Open `PizzaActivitiesImpl.java`
-5. Locate the `notifyDeliveryDriver` method and uncomment it.
-6. Within the loop, after the success condition add a heartbeat, providing the
+
+1. Open `PizzaActivitiesImpl.java`
+2. Locate the `notifyDeliveryDriver` method.
+3. Within the loop, after the success condition add a heartbeat, providing the
    iteration number as the details.
    ```java
       Activity.getExecutionContext().heartbeat("Heartbeat: " + x);
    ```
-7. Save and close the file.
+4. Save and close the file.
+5. Open `PizzaWorkflowImpl.java`
+6. Locate the call to the `notifyDeliveryDriver` Activity and following code
+   and uncomment it. 
+7. Save the file.
 
 ## Part D: Add a Heartbeat Timeout
 
