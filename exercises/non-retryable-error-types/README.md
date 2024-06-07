@@ -24,6 +24,12 @@ You'll need two terminal windows for this exercise.
    ex2
    ```
 2. In one terminal, run `mvn clean compile` to install packages.
+2. Note that the `Starter.java` file has had the credit card number modified to be
+   invalid.
+   ```java
+    // This only has 15 digits
+    CreditCardInfo cardInfo = new CreditCardInfo("Lisa Anderson", "424242424242424");
+   ``` 
 
 ## Part A: Convert Non-Retryable Errors to Be Handled By a Retry Policy
 
@@ -126,14 +132,14 @@ are known as non-retryable error types.
 
 ## Part C: Add Heartbeats
 
-In this part of the exercise, you will add heartbeating to your `pollDeliveryDriver`
-Activity. The `pollDeliveryDriver` method attempts to contact a driver
+In this part of the exercise, you will add heartbeating to your `notifyDeliveryDriver`
+Activity. The `notifyDeliveryDriver` method attempts to contact a driver
 to deliver the customers pizza. It may take a while for a delivery driver to accept
 the delivery, and you want to ensure that the Activity is still alive and processing.
 Heartbeats are used to do this, and fail fast if a failure is detected.
 
 In this exercise, instead of attempting to call out to an external service, success
-of the `pollDeliveryDriver` method call will be simulated.
+of the `notifyDeliveryDriver` method call will be simulated.
 
 **How the simulation works**: The simulation starts by generating a number from
 0 - 14. From there a loop is iterated over from 0 < 10, each time checking to

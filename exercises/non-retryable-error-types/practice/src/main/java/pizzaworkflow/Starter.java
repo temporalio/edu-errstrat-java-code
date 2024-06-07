@@ -39,7 +39,10 @@ public class Starter {
   }
 
   private static PizzaOrder createPizzaOrder() {
-    CreditCardInfo cardInfo = new CreditCardInfo("Lisa Anderson", "4242424242424242");
+
+    // SETUP: Invalid Credit Card Information
+    // This card only has 15 digits
+    CreditCardInfo cardInfo = new CreditCardInfo("Lisa Anderson", "424242424242424");
 
     Customer customer = new Customer(8675309, "Lisa Anderson", "lisa@example.com", "555-555-0000");
     Address address =

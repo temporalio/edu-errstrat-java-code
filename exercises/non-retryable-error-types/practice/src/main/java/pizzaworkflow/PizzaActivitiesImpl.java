@@ -85,7 +85,7 @@ public class PizzaActivitiesImpl implements PizzaActivities {
       String cardProcessingConfirmationNumber = "PAYME-78759";
       return new CreditCardConfirmation(creditCard, cardProcessingConfirmationNumber, bill.getAmount(), Instant.now().getEpochSecond());
     } else {
-      // TODO PART A: Refactor this code to throw a CreditCardProcessingException
+      // TODO PART A: Refactor this code to be retryable
       // You can do this multiple ways. Don't forget that Activity.wrap() allows
       // you to throw a checked exception without having to declare it in the 
       // method header.
