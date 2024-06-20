@@ -19,8 +19,8 @@ course.
 
 | Directory Name                        | Exercise                                                    |
 | :------------------------------------ | :---------------------------------------------------------- |
-| `exercises/defining-custom-errors`  | [Exercise 1](exercises/defining-custom-errors/README.md)  |
-| `exercises/non-retryable-errors`    | [Exercise 2](exercises/non-retryable-errorsREADME.md)    |
+| `exercises/handling-errors`  | [Exercise 1](exercises/handling-errors/README.md)  |
+| `exercises/non-retryable-error-types`    | [Exercise 2](exercises/non-retryable-error-types/README.md)    |
 | `exercises/saga-pattern`        | [Exercise 3](exercises/saga-pattern/README.md)        |
 
 ## Reference
