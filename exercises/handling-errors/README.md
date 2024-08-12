@@ -33,9 +33,8 @@ that will fail your Activities.
 
 Application Failures are used to communicate application-specific failures in
 Workflows and Activities. In Activities, throwing an `ApplicationFailure` will
-not cause the Activity to fail unless the Activity is specified as
-non-retryable, it will retry according to the Retry Policy. To have an Activity
-fail when an `ApplicationFailure` is thrown, set it as non-retryable. Any other 
+not cause the Activity to fail. To have an Activity fail when an `ApplicationFailure` 
+is thrown, set it as non-retryable. Any other 
 exception that is raised in Java is automatically converted to an `ActivityFailure`
 upon being thrown.
 
