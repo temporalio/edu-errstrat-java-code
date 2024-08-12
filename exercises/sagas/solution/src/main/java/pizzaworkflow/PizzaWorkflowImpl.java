@@ -49,7 +49,7 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
   @Override
   public OrderConfirmation orderPizza(PizzaOrder order) {
 
-    Saga saga = new Saga(new Saga.Options.Builder().setParallelCompensation(false).build());
+    Saga saga = new Saga(new Saga.Options.Builder().build());
 
     String orderNumber = order.getOrderNumber();
     Customer customer = order.getCustomer();

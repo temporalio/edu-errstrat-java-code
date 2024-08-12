@@ -76,8 +76,8 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
 
     // TODO Part B: Wrap this line in a try/catch block, catching ActvityFailure
     // instead of ApplicationFailure. From this block, log an error that the Activity
-    // has failed, and then throw another ApplicationFailure.newFailure, passing
-    // in a message and the CreditCrdProcessingException type
+    // has failed, and then throw another ApplicationFailure.newFailureWithCause, passing
+    // in a message and the CreditCardProcessingException type
     creditCardConfirmation = activities.processCreditCard(creditCardInfo, bill);
 
     OrderConfirmation confirmation;
@@ -85,8 +85,8 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
       confirmation = activities.sendBill(bill, creditCardConfirmation);
     } catch (ActivityFailure e) {
       logger.error("Unable to bill customer");
-      throw ApplicationFailure.newFailure("Unable to bill customer",
-          InvalidChargeAmountException.class.getName());
+      throw ApplicationFailure.newFailureWithCause("Unable to bill customer",
+          InvalidChargeAmountException.class.getName(), e);
     }
 
     return confirmation;

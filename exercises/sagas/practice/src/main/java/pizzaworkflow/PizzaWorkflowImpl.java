@@ -50,7 +50,7 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
   public OrderConfirmation orderPizza(PizzaOrder order) {
 
     // TODO PART B: Note the custom Saga object for handling complensations
-    Saga saga = new Saga(new Saga.Options.Builder().setParallelCompensation(false).build());
+    Saga saga = new Saga(new Saga.Options.Builder().build());
 
     String orderNumber = order.getOrderNumber();
     Customer customer = order.getCustomer();

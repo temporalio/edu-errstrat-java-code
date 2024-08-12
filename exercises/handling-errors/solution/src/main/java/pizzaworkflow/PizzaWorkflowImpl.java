@@ -78,8 +78,8 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
       creditCardConfirmation = activities.processCreditCard(creditCardInfo, bill);
     } catch (ActivityFailure e) {
       logger.error("Unable to process credit card");
-      throw ApplicationFailure.newFailure("Unable to process credit card",
-          CreditCardProcessingException.class.getName());
+      throw ApplicationFailure.newFailureWithCause("Unable to process credit card",
+          CreditCardProcessingException.class.getName(), e);
     }
 
     OrderConfirmation confirmation;
@@ -87,8 +87,8 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
       confirmation = activities.sendBill(bill, creditCardConfirmation);
     } catch (ActivityFailure e) {
       logger.error("Unable to bill customer");
-      throw ApplicationFailure.newFailure("Unable to bill customer",
-          InvalidChargeAmountException.class.getName());
+      throw ApplicationFailure.newFailureWithCause("Unable to bill customer",
+          InvalidChargeAmountException.class.getName(), e);
     }
 
     return confirmation;
