@@ -24,7 +24,7 @@ You'll need two terminal windows for this exercise.
    ex2
    ```
 2. In one terminal, run `mvn clean compile` to install packages.
-2. Note that the `Starter.java` file has had the credit card number modified to be
+3. Note that the `Starter.java` file has had the credit card number modified to be
    invalid.
    ```java
     // This only has 15 digits
@@ -43,7 +43,7 @@ immediately fail your Workflow on failure, others who call your Activity may not
    to be retryable.
    1. There are two ways you can do this. You can either throw an `Application.newFailure`
       or you can use `Activity.wrap()` to wrap and throw a new `CreditCardProcessingException`.
-   2. Now, when these errors are thrown from an Activity, the Activity will not be retried.
+   2. Now, when these errors are thrown from an Activity, the Activity will be retried.
 3. Save your file.
 4. Compile your file using `mvn clean compile`.
 5. Verify that your Error is now being retried by attempting to execute the Workflow
