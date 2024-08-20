@@ -1,6 +1,6 @@
 # Error Propagation Demo
 
-This demo demonstrates the Temporal's ability to preserve stack traces across
+This demo demonstrates Temporal's ability to preserve stack traces across
 process and SDK language boundaries. Temporal's use of a single Protobuf to 
 represent failure makes preserving these easy.
 
