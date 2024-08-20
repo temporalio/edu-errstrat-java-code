@@ -1,11 +1,16 @@
-# Error Propagation Demo
+# ECross-Language Error Propagation Demo
 
 This demo demonstrates Temporal's ability to preserve stack traces across
-process and SDK language boundaries. Temporal's use of a single Protobuf to 
-represent failure makes preserving these easy.
+process and SDK language boundaries. emporal uses a single Protobuf to represent 
+failures, which simplifies the process of preserving stack traces across process
+and SDK language boundaries.
 
 **Note: Running this demo will require you to have Python, Java, and Go installed
 on your machine. These are already provided in the GitPod environment**
+
+```bash
+temporal server start-dev --ui-port 8080 --db-filename clusterdata.db
+```
 
 ## Demo Explanation
 
@@ -78,7 +83,12 @@ go run main.go
 only show the Python code.
 2. Review the stack trace in the terminal window that runs the Java Worker. You 
 should see the stack trace from the Python Activity in the Java stack trace.
-3. Observe the stack trace from the Starter code. Note that it shows the messages
-from the failures from both the Java Workflow and Python Activity.
-4. Go to the Web UI. View the Event History and expand on the Failed events. You
-should see the stack traces.
+3. Observe the stack trace in the terminal window that runs Starter code. Note 
+that it shows the messages from the failures from both the Java Workflow and 
+Python Activity.
+4. Go to the Web UI and click into the Workflow Execution named `errors-demo`.
+Scroll down and view the Event History and expand on the Failed events. You
+should see the stack traces within the history. In the final error, you will
+see the propagated errors from the Python Activity in the Java Workflow stack trace.
+This stack trace will be similar to what you observed in the Java Workflow Terminal
+stack trace.
