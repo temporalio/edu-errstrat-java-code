@@ -38,7 +38,7 @@ sequenceDiagram
 
 ## Run the Python Activity
 
-1. Change directories into the `activity` directory
+1. Change into the `activity` directory
 2. Create a virtual environment and activate it
 ```bash
 python -m venv venv
