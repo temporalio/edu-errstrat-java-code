@@ -1,7 +1,7 @@
 # Cross-Language Error Propagation Demo
 
 This demo demonstrates Temporal's ability to preserve stack traces across
-process and SDK language boundaries. emporal uses a single Protobuf to represent 
+process and SDK language boundaries. Temporal uses a single Protobuf to represent
 failures, which simplifies the process of preserving stack traces across process
 and SDK language boundaries.
 
