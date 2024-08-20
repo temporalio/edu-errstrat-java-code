@@ -15,7 +15,7 @@ an Activity in Python to compose a greeting. This greeting purposefully fails,
 and the error messages are propagated back up to the starter, preserving the
 stack traces and adding breadcrumbs so you can see the path it took.
 
-Below is a diagram of how this process:
+Below is a diagram of how this process works:
 
 ```mermaid
 sequenceDiagram
