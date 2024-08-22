@@ -4,7 +4,7 @@ tasks:
     # specific to this course (/etc/bash.bashrc sources it from there)
   - name: Shell configuration
     init: |
-      ln /workspace/edu-errors-java-code/.bash.cfg /workspace/.bash.cfg
+      ln /workspace/edu-errstrat-java-code/.bash.cfg /workspace/.bash.cfg
       exit;
     # task starts the Temporal Service via the CLI
   - name: Temporal Local Development Server
@@ -30,18 +30,18 @@ tasks:
       # completion of the task above that links this elsewhere (the
       # Docker image expects it in the same location for every course, 
       # but this .gitpod.yml file can use course-specific paths)
-      source /workspace/edu-errors-java-code/.bash.cfg
+      source /workspace/edu-errstrat-java-code/.bash.cfg
       clear
       echo "Use this terminal to start your Worker."
   - name: Terminal
     command: |
-      source /workspace/edu-errors-java-code/.bash.cfg
+      source /workspace/edu-errstrat-java-code/.bash.cfg
       clear
       echo "Use this terminal to run commands.."
     openMode: split-right
   - name: Signal Terminal
     command: |
-      source /workspace/edu-errors-java-code/.bash.cfg
+      source /workspace/edu-errstrat-java-code/.bash.cfg
       clear
       echo "Use this terminal to send additional signals.."
     openMode: split-right
