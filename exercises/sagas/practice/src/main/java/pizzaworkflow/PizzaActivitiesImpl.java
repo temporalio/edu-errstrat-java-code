@@ -123,7 +123,7 @@ public class PizzaActivitiesImpl implements PizzaActivities {
       Activity.getExecutionContext().heartbeat("Heartbeat: " + x);
       logger.info("Heartbeat: " + x);
       try {
-        Thread.sleep(Duration.ofSeconds(5));
+        Thread.sleep(5000); // 5 seconds;
       } catch (InterruptedException e) {
         continue;
       }
@@ -143,9 +143,9 @@ public class PizzaActivitiesImpl implements PizzaActivities {
     return "Reverted changes to inventory caused by order" + order.getOrderNumber();
   }
 
-  public String refundCustomer(PizzaOrder order) {
-    logger.info("Customer refunded: ", order.getCustomer());
-    return "Customer refunded: " + order.getCustomer();
+  public String refundCustomer(CreditCardInfo order) {
+    logger.info("Customer refunded: ", order.getHolderName());
+    return "Customer refunded: " + order.getHolderName();
   }
 
 }

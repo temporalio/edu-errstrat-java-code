@@ -118,7 +118,7 @@ public class PizzaActivitiesImpl implements PizzaActivities {
       Activity.getExecutionContext().heartbeat("Heartbeat: " + x);
       logger.info("Heartbeat: " + x);
       try {
-        Thread.sleep(Duration.ofSeconds(5));
+        Thread.sleep(5000); // 5 seconds
       } catch (InterruptedException e) {
         continue;
       }

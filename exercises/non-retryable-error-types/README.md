@@ -162,7 +162,9 @@ be updated to reflect this.
 5. Open `PizzaWorkflowImpl.java`
 6. Locate the call to the `notifyDeliveryDriver` Activity and following code
    and uncomment it. 
-7. Save the file.
+7. Delete the return statement at the end of the Workflow, as the uncommented
+   code will now make this statement unreachable.
+8. Save the file.
 
 ## Part D: Add a Heartbeat Timeout
 
@@ -218,7 +220,7 @@ a Heartbeat that is timing out.
 
 1. Open `PizzaActivitiesImpl.java`.
 2. In the `notifyDeliveryDriver` method, update the duration in the `sleep` statement
-   from 5s to 15s. This is longer than the Heartbeat Timeout you set in Step D.
+   from 5000ms to 15000ms. This is longer than the Heartbeat Timeout you set in Step D.
 3. Kill the Worker from the previous exercise and recompile your code using `mvn clean compile`.
 4. In one terminal, start the Worker by running:
    ```bash
