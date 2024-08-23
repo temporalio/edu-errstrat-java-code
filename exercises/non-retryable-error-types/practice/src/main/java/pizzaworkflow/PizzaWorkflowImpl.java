@@ -42,7 +42,7 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
   // TODO Part B: Add the retryOptions to the ActivityOptions using `.setRetryOptions`
   // TODO Part D: Add the HeartbeatTimeout to the ActivityOptions using `.setHeartbeatTimeout`
   ActivityOptions options = ActivityOptions.newBuilder()
-      .setStartToCloseTimeout(Duration.ofSeconds(5))
+      .setStartToCloseTimeout(Duration.ofSeconds(300))
       .build();
 
   private final PizzaActivities activities =
@@ -120,7 +120,7 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
       return confirmation;
     }
     */
-
+    // TODO Part C: Delete this line as it will become unreachable
     return confirmation;
   }
 }
