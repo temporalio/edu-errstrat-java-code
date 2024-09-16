@@ -69,7 +69,7 @@ thrown from the `processCreditCard` Activity and handle it.
       to catch this failure and either handle it, or continue to propagate it up.
    2. Wrap this line in a `try/catch` block. However, you will not catch `ApplicationFailure`.
       Since the `ApplicationFailure` in the Activity is designated as non-retryable,
-      by the time it reaches the Workflow it is converted to an `ActvityFailure`.
+      by the time it reaches the Workflow it is converted to an `ActivityFailure`.
    3. Within the `catch` block, add a logging statement stating that the Activity
       has failed.
    4. After the logging statement, throw another `ApplicationFailure` using
