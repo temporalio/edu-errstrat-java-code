@@ -23,6 +23,12 @@ course.
 | `exercises/non-retryable-error-types`    | [Exercise 2](exercises/non-retryable-error-types/README.md)    |
 | `exercises/saga-pattern`        | [Exercise 3](exercises/sagas/README.md)        |
 
+## Instructor-Led Demonstrations
+
+| Directory Name            | Description                                                         |
+| :------------------------ | :------------------------------------------------------------------ |
+| `demos/error-propagation` | [Cross-Language Error Propagation](demos/error-propagation/README.md) |
+
 ## Reference
 
 The following links provide additional information that you may find helpful as
