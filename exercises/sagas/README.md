@@ -92,9 +92,9 @@ rollback.
 5. Open `Starter.java`
 6. Locate the following line:
    ```java
-   CreditCardInfo cardInfo = new CreditCardInfo("Lisa Anderson", "424242424242424");
+   CreditCardInfo cardInfo = new CreditCardInfo("Lisa Anderson", "4242424242424242");
    ```
-   And delete the last 4 from the end. This will cause the `processCreditCard`
+   And delete the last 2 from the end. This will cause the `processCreditCard`
    Activity to fail, triggering a compensation.
 7. Compile your code using `mvn clean compile`
 8. Restart the Worker by running:
