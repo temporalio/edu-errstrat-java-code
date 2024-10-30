@@ -1,7 +1,7 @@
 # Code Repository for Crafting an Error Handling Strategy (Java)
 
 This repository provides code used for exercises and demonstrations
-included in the Java version of the [Crafting an Error Handling Strategy](https://learn.temporal.io/courses/crafting-error-strategy)
+included in the Java version of the [Crafting an Error Handling Strategy](https://learn.temporal.io/courses/errstrat/)
 training course.
 
 It's important to remember that the example code used in this course was designed 
