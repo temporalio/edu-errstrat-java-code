@@ -17,10 +17,6 @@ in the `solution` subdirectory.
    ```bash
    cd exercises/sagas/practice
    ```
-   or, if you're in the GitPod environment:
-   ```bash
-   ex3
-   ```
 
 ## Part A: Review your new rollback Activities and custom Error
 
@@ -74,17 +70,9 @@ rollback.
    ```bash
    mvn exec:java -Dexec.mainClass="pizzaworkflow.PizzaWorker"
    ```
-   or, if you're in the GitPod environment, run:
-   ```bash
-   ex3w
-   ```
 2. In another terminal, start the Workflow by executing:
    ```bash
    mvn exec:java -Dexec.mainClass="pizzaworkflow.Starter"
-   ```
-   or, if you're in the GitPod environment, run:
-   ```bash
-   ex3st
    ```
 3. The Workflow should complete successfully. Verify its status is **Completed** in
    the Web UI. 
@@ -101,17 +89,9 @@ rollback.
    ```bash
    mvn exec:java -Dexec.mainClass="pizzaworkflow.PizzaWorker"
    ```
-   or, if you're in the GitPod environment, run:
-   ```bash
-   ex3w
-   ```
 9. In another terminal, start the Workflow again by executing:
    ```bash
    mvn exec:java -Dexec.mainClass="pizzaworkflow.Starter"
-   ```
-   or, if you're in the GitPod environment, run:
-   ```bash
-   ex3st
    ```
 10. A short time after executing, you should see a stack trace appear stating 
    that the Activity failed.
