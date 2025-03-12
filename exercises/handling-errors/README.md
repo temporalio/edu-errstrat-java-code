@@ -20,10 +20,6 @@ You'll need two terminal windows for this exercise.
    ```bash
    cd exercises/handling-errors/practice
    ```
-   or, if you're in the GitPod environment:
-   ```bash
-   ex1
-   ```
 2. In one terminal, run `mvn clean compile` to install packages.
 
 ## Part A: Throw a non-retryable `ApplicationFailure` to fail an Activity
@@ -93,17 +89,9 @@ been provided to run this Workflow.
    ```bash
    mvn exec:java -Dexec.mainClass="pizzaworkflow.PizzaWorker"
    ```
-   or, if you're in the GitPod environment, run:
-   ```bash
-   ex1w
-   ```
 3. In another terminal, start the Workflow by executing `Starter.java`:
    ```bash
    mvn exec:java -Dexec.mainClass="pizzaworkflow.Starter"
-   ```
-   or, if you're in the GitPod environment, run:
-   ```bash
-   ex1st
    ```
 4. In the Web UI, verify that the Workflow ran successfully to completion.
 
@@ -123,17 +111,9 @@ been provided to run this Workflow.
    ```bash
    mvn exec:java -Dexec.mainClass="pizzaworkflow.PizzaWorker"
    ```
-   or, if you're in the GitPod environment, run:
-   ```bash
-   ex1w
-   ```
 5. In another terminal, start the Workflow by executing `Starter.java`:
    ```bash
    mvn exec:java -Dexec.mainClass="pizzaworkflow.Starter"
-   ```
-   or, if you're in the GitPod environment, run:
-   ```bash
-   ex1st
    ```
 6. You should see the Workflow fail in the terminal where you executed `Starter.java`.
    Also check the WebUI and view the failure there.
