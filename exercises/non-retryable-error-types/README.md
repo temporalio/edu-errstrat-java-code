@@ -145,6 +145,7 @@ be updated to reflect this.
 7. Delete the return statement at the end of the Workflow, as the uncommented
    code will now make this statement unreachable.
 8. Save the file.
+9. Update `Starter.java` file to have a valid test card number - "4242424242424242", otherwise the validation would still be failing.
 
 ## Part D: Add a Heartbeat Timeout
 
